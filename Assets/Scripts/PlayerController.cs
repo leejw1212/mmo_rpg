@@ -8,15 +8,16 @@ public class PlayerController : MonoBehaviour
     float _speed = 3.0f;
     void Start()
     {
-        
+        Managers.Input.KeyAction -= OnKeyboard;
+        Managers.Input.KeyAction += OnKeyboard;
     }
 
-    // GameObject (Player)
-        // Transform
-        // PlayerController (*)
-        // Transform 의 위치를 변경시켜야 하는데 자주 사용하기 때문에 transform 바로 사용
-
     void Update()
+    {
+         
+    }
+
+    void OnKeyboard()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -38,6 +39,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.right), 0.2f);
             transform.position += Vector3.right * Time.deltaTime * _speed;
         }
-        //transform   
+        //transform  
     }
 }
